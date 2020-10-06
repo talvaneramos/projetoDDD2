@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Talvane\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Talvane\\.nuget\\packages"
+    ]
+  }
+}
