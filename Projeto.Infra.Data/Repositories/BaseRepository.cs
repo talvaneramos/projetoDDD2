@@ -26,7 +26,7 @@ namespace Projeto.Infra.Data.Repositories
             dataContext.SaveChanges();
         }
 
-        public void Updete(T obj)
+        public void Update(T obj)
         {
             dataContext.Entry(obj).State = EntityState.Modified;
             dataContext.SaveChanges();
@@ -38,12 +38,12 @@ namespace Projeto.Infra.Data.Repositories
             dataContext.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return dataContext.Set<T>().ToList();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return dataContext.Set<T>().Find(id);
         }

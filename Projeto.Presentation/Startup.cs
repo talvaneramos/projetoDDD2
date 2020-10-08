@@ -5,11 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Projeto.Application.Contracts;
+using Projeto.Application.Services;
+using Projeto.Domain.Contracts.Repositories;
+using Projeto.Domain.Contracts.Services;
+using Projeto.Domain.Services;
+using Projeto.Infra.Data.Contexts;
+using Projeto.Infra.Data.Repositories;
 
 namespace Projeto.Presentation
 {
@@ -35,16 +43,31 @@ namespace Projeto.Presentation
                     new OpenApiInfo
                     {
                         Title = "API para Controle de Fornecedores e Produtos",
-                        Version = "v1.1",
+                        Version = "v1",
                         Description = "Projeto desenvolvido em NET CORE 3.1 API com EntityFramework e usando o padrão DDD (Domain Driven Design)",
                         Contact = new OpenApiContact
                         {
-                            Name = "C#",
-                            Url = new Uri("http://wwww...."),
-                            Email = "talvanesilvaramos@gmail.com"
+                            Name = "COTI Informática - Curso de C# WebDeveloper",
+                            Url = new Uri("http://wwww.cotiinformatica.com.br"),
+                            Email = "contato@cotiinformatica.com.br"
                         }
                     });
             });
+
+            //Configuração para o EntityFramework
+            services.AddDbContext<DataContext>
+                (d => d.UseSqlServer(Configuration.GetConnectionString("ProjetoDDD2")));
+
+            //Mapeamento da injeção de dependência
+            services.AddTransient<IFornecedorApplicationService, FornecedorApplicationService>();
+            services.AddTransient<IProdutoApplicationService, ProdutoApplicationService>();
+
+            services.AddTransient<IFornecedorDomainService, FornecedorDomainService>();
+            services.AddTransient<IProdutoDomainService, ProdutoDomainService>();
+
+            services.AddTransient<IFornecedorRepository, FornecedorRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,7 +8,7 @@ namespace Projeto.Domain.Contracts.Repositories
         where T : class
     {
         void Insert(T obj);
-        void Updete(T obj);
+        void Update(T obj);
         void Delete(T obj);
 
         List<T> GetAll();

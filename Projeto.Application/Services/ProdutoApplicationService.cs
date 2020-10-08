@@ -62,6 +62,13 @@ namespace Projeto.Application.Services
                 model.Preco = item.Preco.ToString();
                 model.Quantidade = item.Quantidade.ToString();
                 model.Total = (item.Preco * item.Quantidade).ToString();
+
+                model.Fornecedor = new FornecedorConsultaModel();
+                model.Fornecedor.IdFornecedor = item.Fornecedor.IdFornecedor.ToString();
+                model.Fornecedor.Nome = item.Fornecedor.Nome;
+                model.Fornecedor.Cnpj = item.Fornecedor.Cnpj;
+
+                lista.Add(model);
             }
 
             return lista;
@@ -77,6 +84,11 @@ namespace Projeto.Application.Services
             model.Preco = produto.Preco.ToString();
             model.Quantidade = produto.Quantidade.ToString();
             model.Total = (produto.Preco * produto.Quantidade).ToString();
+
+            model.Fornecedor = new FornecedorConsultaModel();
+            model.Fornecedor.IdFornecedor = produto.Fornecedor.IdFornecedor.ToString();
+            model.Fornecedor.Nome = produto.Fornecedor.Nome;
+            model.Fornecedor.Cnpj = produto.Fornecedor.Cnpj;
 
             return model;
         }

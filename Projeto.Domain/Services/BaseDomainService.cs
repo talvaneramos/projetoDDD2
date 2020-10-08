@@ -22,9 +22,9 @@ namespace Projeto.Domain.Services
             baseRepository.Insert(obj);
         }
 
-        public virtual void Updete(T obj)
+        public virtual void Update(T obj)
         {
-            baseRepository.Updete(obj);
+            baseRepository.Update(obj);
         }
 
         public virtual void Delete(T obj)

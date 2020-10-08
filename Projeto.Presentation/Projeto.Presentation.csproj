@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <ProjectReference Include="..\Projeto.Application\Projeto.Application.csproj" />
+    <ProjectReference Include="..\Projeto.Domain\Projeto.Domain.csproj" />
+    <ProjectReference Include="..\Projeto.Infra.Data\Projeto.Infra.Data.csproj" />
   </ItemGroup>
 
 
